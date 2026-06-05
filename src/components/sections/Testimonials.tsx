@@ -62,7 +62,7 @@ export function Testimonials() {
               key={t.name}
               variants={fadeUp}
               transition={defaultTransition}
-              className="flex flex-col p-6 sm:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="flex flex-col p-6 sm:p-8 rounded-2xl bg-white/70 backdrop-blur-sm border border-gray-100/60 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:bg-white/90 transition-all duration-300"
             >
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.stars }).map((_, i) => (

@@ -51,7 +51,7 @@ export function ROICalculator() {
           <motion.div
             variants={fadeUp}
             transition={defaultTransition}
-            className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-8"
+            className="bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100/60 shadow-sm p-6 sm:p-8 space-y-8"
           >
             <InputSlider
               label="Missed calls per month"
@@ -86,7 +86,7 @@ export function ROICalculator() {
             ref={resultRef}
             variants={fadeUp}
             transition={defaultTransition}
-            className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100 p-6 sm:p-8 flex flex-col items-center justify-center text-center min-h-[320px]"
+            className="bg-gradient-to-br from-green-50/80 to-emerald-50/80 backdrop-blur-sm rounded-2xl border border-green-100/60 shadow-md shadow-green-100/20 p-6 sm:p-8 flex flex-col items-center justify-center text-center min-h-[320px]"
           >
             <TrendingUp className="w-10 h-10 text-green-500 mb-4" />
             <p className="text-sm font-semibold text-green-700 uppercase tracking-wide mb-2">

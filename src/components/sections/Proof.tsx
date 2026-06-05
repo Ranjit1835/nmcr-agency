@@ -68,7 +68,7 @@ export function Proof() {
               rel="noopener noreferrer"
               variants={fadeUp}
               transition={defaultTransition}
-              className="group flex flex-col p-6 sm:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+              className="group flex flex-col p-6 sm:p-8 rounded-2xl bg-white/70 backdrop-blur-sm border border-gray-100/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:bg-white/90 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-5">
                 <div

@@ -70,7 +70,7 @@ export function ContactCTA() {
           <motion.div
             variants={fadeUp}
             transition={defaultTransition}
-            className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8"
+            className="lg:col-span-3 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100/60 shadow-md p-6 sm:p-8"
           >
             {status === "sent" ? (
               <motion.div

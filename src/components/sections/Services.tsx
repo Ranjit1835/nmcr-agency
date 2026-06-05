@@ -89,10 +89,10 @@ export function Services() {
               key={svc.title}
               variants={fadeUp}
               transition={defaultTransition}
-              className={`relative flex flex-col p-6 sm:p-8 rounded-2xl border transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 ${
+              className={`relative flex flex-col p-6 sm:p-8 rounded-2xl border transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${
                 svc.highlight
-                  ? "border-sky-200 bg-gradient-to-br from-sky-50/60 to-white shadow-sm"
-                  : "border-gray-100 bg-white shadow-sm"
+                  ? "border-sky-200/60 bg-gradient-to-br from-sky-50/60 to-white/80 backdrop-blur-sm shadow-md shadow-sky-100/30"
+                  : "border-gray-100/60 bg-white/70 backdrop-blur-sm shadow-sm hover:bg-white/90"
               }`}
             >
               {svc.highlight && (

@@ -3,6 +3,8 @@
 import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeUp, defaultTransition } from "@/lib/motion";
+import { AuroraBackground } from "@/components/AuroraBackground";
+import { HeroCallVisualization } from "@/components/HeroCallVisualization";
 
 const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 
@@ -14,9 +16,10 @@ const heroStagger = {
 export function Hero() {
   return (
     <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-sky-50/80 via-white to-white pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-50/40 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+      {/* Aurora background */}
+      <AuroraBackground />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-50/60 via-white/80 to-white pointer-events-none" />
 
       <motion.div
         className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
@@ -27,7 +30,7 @@ export function Hero() {
         <motion.div
           variants={fadeUp}
           transition={defaultTransition}
-          className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-100"
+          className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-sky-100 shadow-sm"
         >
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <span className="text-sm font-medium text-sky-700">AI that answers your phone 24/7</span>
@@ -71,7 +74,7 @@ export function Hero() {
           </a>
           <a
             href="#how-it-works"
-            className="inline-flex items-center justify-center h-13 px-8 rounded-lg text-base font-semibold text-gray-700 border border-gray-200 hover:bg-gray-50 hover:-translate-y-0.5 transition-all duration-200"
+            className="inline-flex items-center justify-center h-13 px-8 rounded-lg text-base font-semibold text-gray-700 border border-gray-200 bg-white/60 backdrop-blur-sm hover:bg-white hover:-translate-y-0.5 transition-all duration-200"
           >
             <Play className="w-4 h-4 mr-2 text-sky-500" />
             See How It Works
@@ -85,6 +88,9 @@ export function Hero() {
         >
           Free audit. No contracts. No setup hassle.
         </motion.p>
+
+        {/* Signature call visualization */}
+        <HeroCallVisualization />
       </motion.div>
     </section>
   );
