@@ -1,14 +1,14 @@
 import { ExternalLink, FileText, Video } from "lucide-react";
 
-const HIRERESUME_URL = "https://hireresume.in";
-const AGENTCUT_URL = "https://REPLACE_ME";
+const HIRERESUME_URL = "https://hiresume.in";
+const AGENTCUT_URL = "https://agentcutf.up.railway.app/";
 
 const projects = [
   {
     icon: FileText,
     iconBg: "bg-violet-50",
     iconColor: "text-violet-600",
-    title: "HireResume.in",
+    title: "HiResume.in",
     subtitle: "AI Resume Analyzer",
     description:
       "Full-stack AI platform that analyzes resumes against ATS systems, scores them across 5 dimensions, and rewrites them with AI. Thousands of users. Live in production.",
