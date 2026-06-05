@@ -1,6 +1,6 @@
 import { Phone, Zap, Bot, Globe, ArrowRight } from "lucide-react";
 
-const CALENDLY_LINK = "https://calendly.com/REPLACE_ME";
+const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 
 const services = [
   {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const CALENDLY_LINK = "https://calendly.com/REPLACE_ME";
+const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 
 const navLinks = [
   { label: "Services", href: "#services" },

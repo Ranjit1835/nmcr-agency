@@ -2,7 +2,7 @@
 
 import { ArrowRight, Play } from "lucide-react";
 
-const CALENDLY_LINK = "https://calendly.com/REPLACE_ME";
+const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 
 export function Hero() {
   return (

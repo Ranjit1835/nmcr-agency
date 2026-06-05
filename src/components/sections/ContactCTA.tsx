@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || "REPLACE_ME";
-const CALENDLY_LINK = "https://calendly.com/REPLACE_ME";
+const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 const CONTACT_EMAIL = "hello@nmcragency.com";
 
 export function ContactCTA() {

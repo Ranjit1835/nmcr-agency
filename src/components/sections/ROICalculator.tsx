@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Calculator, TrendingUp, ArrowRight } from "lucide-react";
 
-const CALENDLY_LINK = "https://calendly.com/REPLACE_ME";
+const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 
 export function ROICalculator() {
   const [missedCalls, setMissedCalls] = useState(40);
