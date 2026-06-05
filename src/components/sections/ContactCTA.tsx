@@ -2,10 +2,12 @@
 
 import { useState, type FormEvent } from "react";
 import { Send, Calendar, Mail, CheckCircle2, Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { fadeUp, staggerContainer, defaultTransition, viewportOnce } from "@/lib/motion";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || "REPLACE_ME";
 const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
@@ -41,7 +43,14 @@ export function ContactCTA() {
   return (
     <section id="contact" className="py-16 sm:py-24 bg-gradient-to-b from-white to-sky-50/40">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          transition={defaultTransition}
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Ready to stop sending customers to voicemail?
           </h2>
@@ -49,13 +58,27 @@ export function ContactCTA() {
             Book a free audit or drop us a message. We&apos;ll show you exactly how many calls
             you&apos;re missing — and what that&apos;s costing you.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Contact form */}
-          <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
+        <motion.div
+          className="grid lg:grid-cols-5 gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          <motion.div
+            variants={fadeUp}
+            transition={defaultTransition}
+            className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8"
+          >
             {status === "sent" ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center justify-center py-12 text-center"
+              >
                 <CheckCircle2 className="w-12 h-12 text-green-500 mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Message received!</h3>
                 <p className="text-sm text-gray-500">
@@ -70,7 +93,7 @@ export function ContactCTA() {
                   </a>
                   .
                 </p>
-              </div>
+              </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -131,7 +154,7 @@ export function ContactCTA() {
                   type="submit"
                   size="lg"
                   disabled={status === "sending"}
-                  className="w-full h-12 bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-md shadow-orange-200 cursor-pointer"
+                  className="w-full h-12 bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-md shadow-orange-200 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                 >
                   {status === "sending" ? (
                     <>
@@ -152,15 +175,18 @@ export function ContactCTA() {
                 )}
               </form>
             )}
-          </div>
+          </motion.div>
 
-          {/* Sidebar info */}
-          <div className="lg:col-span-2 space-y-6">
+          <motion.div
+            variants={fadeUp}
+            transition={defaultTransition}
+            className="lg:col-span-2 space-y-6"
+          >
             <a
               href={CALENDLY_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100 hover:shadow-md transition-all group"
+              className="flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
             >
               <div className="w-11 h-11 rounded-xl bg-sky-100 flex items-center justify-center flex-shrink-0">
                 <Calendar className="w-5 h-5 text-sky-600" />
@@ -204,8 +230,8 @@ export function ContactCTA() {
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

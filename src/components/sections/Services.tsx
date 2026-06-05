@@ -1,4 +1,8 @@
+"use client";
+
 import { Phone, Zap, Bot, Globe, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, defaultTransition, viewportOnce } from "@/lib/motion";
 
 const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
 
@@ -57,20 +61,35 @@ export function Services() {
   return (
     <section id="services" className="py-16 sm:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          transition={defaultTransition}
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Done-for-you AI that pays for itself
           </h2>
           <p className="mt-3 text-gray-500 max-w-xl mx-auto">
             We handle everything — setup, tuning, and ongoing support. You just answer more doors.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <motion.div
+          className="grid sm:grid-cols-2 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {services.map((svc) => (
-            <div
+            <motion.div
               key={svc.title}
-              className={`relative flex flex-col p-6 sm:p-8 rounded-2xl border transition-all hover:shadow-lg hover:-translate-y-0.5 ${
+              variants={fadeUp}
+              transition={defaultTransition}
+              className={`relative flex flex-col p-6 sm:p-8 rounded-2xl border transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 ${
                 svc.highlight
                   ? "border-sky-200 bg-gradient-to-br from-sky-50/60 to-white shadow-sm"
                   : "border-gray-100 bg-white shadow-sm"
@@ -100,9 +119,9 @@ export function Services() {
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

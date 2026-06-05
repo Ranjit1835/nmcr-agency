@@ -1,4 +1,8 @@
+"use client";
+
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, defaultTransition, viewportOnce } from "@/lib/motion";
 
 // TODO: Replace with real testimonials once you have client feedback
 const testimonials = [
@@ -29,21 +33,36 @@ export function Testimonials() {
   return (
     <section className="py-16 sm:py-24 bg-gradient-to-b from-gray-50/50 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          transition={defaultTransition}
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Business owners who stopped losing calls
           </h2>
           <p className="mt-3 text-gray-500 max-w-xl mx-auto">
             Results you can measure — not promises you have to trust.
           </p>
-        </div>
+        </motion.div>
 
         {/* TODO: Replace placeholder testimonials with real client feedback */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {testimonials.map((t) => (
-            <div
+            <motion.div
               key={t.name}
-              className="flex flex-col p-6 sm:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm"
+              variants={fadeUp}
+              transition={defaultTransition}
+              className="flex flex-col p-6 sm:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.stars }).map((_, i) => (
@@ -57,9 +76,9 @@ export function Testimonials() {
                 <p className="text-sm font-bold text-gray-900">{t.name}</p>
                 <p className="text-xs text-gray-500">{t.role}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

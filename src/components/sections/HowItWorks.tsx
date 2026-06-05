@@ -1,4 +1,8 @@
+"use client";
+
 import { Search, Wrench, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainerSlow, defaultTransition, viewportOnce } from "@/lib/motion";
 
 const steps = [
   {
@@ -34,19 +38,36 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="py-16 sm:py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          transition={defaultTransition}
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Up and running in days, not months
           </h2>
           <p className="mt-3 text-gray-500 max-w-xl mx-auto">
             Three steps. No IT team required. We handle everything.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <motion.div
+          className="grid md:grid-cols-3 gap-8"
+          variants={staggerContainerSlow}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {steps.map((item, i) => (
-            <div key={item.step} className="relative text-center">
-              {/* Connector line (desktop only) */}
+            <motion.div
+              key={item.step}
+              variants={fadeUp}
+              transition={defaultTransition}
+              className="relative text-center"
+            >
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-gray-200 to-transparent" />
               )}
@@ -61,9 +82,9 @@ export function HowItWorks() {
               </span>
               <h3 className="text-lg font-bold text-gray-900 mt-2 mb-3">{item.title}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

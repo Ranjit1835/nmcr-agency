@@ -1,4 +1,8 @@
+"use client";
+
 import { ExternalLink, FileText, Video } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, defaultTransition, viewportOnce } from "@/lib/motion";
 
 const HIRERESUME_URL = "https://hiresume.in";
 const AGENTCUT_URL = "https://agentcutf.up.railway.app/";
@@ -32,7 +36,14 @@ export function Proof() {
   return (
     <section id="proof" className="py-16 sm:py-24 bg-gradient-to-b from-gray-50/50 to-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          transition={defaultTransition}
+        >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
             We don&apos;t just talk AI — we ship it
           </h2>
@@ -40,16 +51,24 @@ export function Proof() {
             Real products, live in production, built by the same founder who&apos;ll build your AI
             receptionist. This is the trust differentiator.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <motion.div
+          className="grid sm:grid-cols-2 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {projects.map((project) => (
-            <a
+            <motion.a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col p-6 sm:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all"
+              variants={fadeUp}
+              transition={defaultTransition}
+              className="group flex flex-col p-6 sm:p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
             >
               <div className="flex items-start justify-between mb-5">
                 <div
@@ -74,9 +93,9 @@ export function Proof() {
                   </span>
                 ))}
               </div>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
