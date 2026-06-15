@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, defaultTransition, viewportOnce } from "@/lib/motion";
 
 const HIRERESUME_URL = "https://hiresume.in";
-const AGENTCUT_URL = "https://agentcutf.up.railway.app/";
+const AGENTCUT_URL = "https://agentcut.up.railway.app/";
 
 const projects = [
   {

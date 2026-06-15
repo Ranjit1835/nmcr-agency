@@ -23,6 +23,22 @@ export function ContactCTA() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    if (FORMSPREE_ID === "REPLACE_ME") {
+      const name = data.get("name") || "";
+      const business = data.get("business") || "";
+      const email = data.get("email") || "";
+      const phone = data.get("phone") || "";
+      const message = data.get("message") || "";
+      const subject = encodeURIComponent(`New Lead: ${business}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nBusiness: ${business}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      setStatus("sent");
+      form.reset();
+      return;
+    }
+
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
@@ -170,7 +186,10 @@ export function ContactCTA() {
                 </Button>
                 {status === "error" && (
                   <p className="text-sm text-red-500 text-center">
-                    Something went wrong. Please try again or email us directly.
+                    Something went wrong. Please{" "}
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="underline font-medium">
+                      email us directly at {CONTACT_EMAIL}
+                    </a>
                   </p>
                 )}
               </form>

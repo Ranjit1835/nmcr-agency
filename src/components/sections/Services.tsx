@@ -14,7 +14,7 @@ const services = [
     title: "AI Voice Receptionist & Missed-Call Recovery",
     description:
       "Your phone never goes to voicemail again. Our AI answers 24/7, books appointments on your calendar, and texts back every missed caller — instantly.",
-    pricing: "Tailored to your call volume",
+    pricing: "Starting at $297/mo",
     cta: "Book a Free Audit",
     ctaLink: CALENDLY_LINK,
     highlight: true,

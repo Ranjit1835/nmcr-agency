@@ -1,83 +1,129 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { Gift, Shield, Users, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, defaultTransition, viewportOnce } from "@/lib/motion";
 
-// TODO: Replace with real testimonials once you have client feedback
-const testimonials = [
+const CALENDLY_LINK = "https://calendly.com/ranjitperumala/30min";
+const SPOTS_REMAINING = 3;
+
+const benefits = [
   {
-    name: "Mike R.",
-    role: "Owner, ProFlow Plumbing",
-    quote:
-      "We were missing 30+ calls a month and didn't even realize it. NMCR's AI receptionist paid for itself in the first week.",
-    stars: 5,
+    icon: Gift,
+    iconBg: "bg-orange-50",
+    iconColor: "text-orange-600",
+    title: "Free setup",
+    subtitle: "$500 value, on us",
   },
   {
-    name: "Sarah T.",
-    role: "Operations Manager, CoolBreeze HVAC",
-    quote:
-      "Our after-hours calls used to go straight to voicemail. Now every single one gets answered and booked. Revenue is up 22% this quarter.",
-    stars: 5,
+    icon: Shield,
+    iconBg: "bg-green-50",
+    iconColor: "text-green-600",
+    title: "Free first month",
+    subtitle: "See results before you pay",
   },
   {
-    name: "James L.",
-    role: "Owner, ShieldPest Control",
-    quote:
-      "I was skeptical about AI answering my phones, but customers can't tell the difference. Setup was painless and the ROI is undeniable.",
-    stars: 5,
+    icon: Users,
+    iconBg: "bg-sky-50",
+    iconColor: "text-sky-600",
+    title: "Direct founder access",
+    subtitle: "Your personal AI engineer",
   },
 ];
 
 export function Testimonials() {
   return (
     <section className="py-16 sm:py-24 bg-gradient-to-b from-gray-50/50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-14"
+          className="text-center mb-10"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
           transition={defaultTransition}
         >
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">
+            <Sparkles className="w-4 h-4 text-orange-500" />
+            <span className="text-sm font-medium text-orange-700">Limited Beta</span>
+          </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            Business owners who stopped losing calls
+            Be one of our founding partners
           </h2>
           <p className="mt-3 text-gray-500 max-w-xl mx-auto">
-            Results you can measure — not promises you have to trust.
+            We&apos;re selecting 5 home-services businesses for our exclusive beta launch.
+            Founding partners get priority support and locked-in pricing — forever.
           </p>
         </motion.div>
 
-        {/* TODO: Replace placeholder testimonials with real client feedback */}
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={staggerContainer}
+          className="bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100/60 shadow-md p-6 sm:p-10"
+          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
+          transition={defaultTransition}
         >
-          {testimonials.map((t) => (
-            <motion.div
-              key={t.name}
-              variants={fadeUp}
-              transition={defaultTransition}
-              className="flex flex-col p-6 sm:p-8 rounded-2xl bg-white/70 backdrop-blur-sm border border-gray-100/60 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:bg-white/90 transition-all duration-300"
+          {/* Spots remaining */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="flex gap-1.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    i < SPOTS_REMAINING
+                      ? "bg-orange-500"
+                      : "bg-gray-200"
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="text-sm font-bold text-gray-900">
+              Only <span className="text-orange-600">{SPOTS_REMAINING} of 5</span> spots remaining
+            </p>
+          </div>
+
+          {/* Benefits grid */}
+          <motion.div
+            className="grid sm:grid-cols-3 gap-6 mb-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {benefits.map((b) => (
+              <motion.div
+                key={b.title}
+                variants={fadeUp}
+                transition={defaultTransition}
+                className="text-center p-4 rounded-xl bg-gray-50/50 border border-gray-100"
+              >
+                <div
+                  className={`w-12 h-12 rounded-xl ${b.iconBg} flex items-center justify-center mx-auto mb-3`}
+                >
+                  <b.icon className={`w-6 h-6 ${b.iconColor}`} />
+                </div>
+                <p className="text-sm font-bold text-gray-900">{b.title}</p>
+                <p className="text-xs text-gray-500 mt-1">{b.subtitle}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <a
+              href={CALENDLY_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-13 px-8 rounded-lg text-base font-bold bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-200 hover:shadow-xl hover:shadow-orange-300 hover:-translate-y-0.5 transition-all duration-200"
             >
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="text-sm text-gray-700 leading-relaxed mb-6 flex-1">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div>
-                <p className="text-sm font-bold text-gray-900">{t.name}</p>
-                <p className="text-xs text-gray-500">{t.role}</p>
-              </div>
-            </motion.div>
-          ))}
+              Claim Your Beta Spot
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
+            <p className="mt-3 text-xs text-gray-400">
+              Limited time — beta pricing ends when spots fill
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
