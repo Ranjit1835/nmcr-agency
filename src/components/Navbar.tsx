@@ -54,6 +54,23 @@ export function Navbar() {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      setMobileOpen(false);
+      const id = href.replace("#", "");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const offset = 80;
+          const top = el.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }, 100);
+    },
+    []
+  );
+
   // Hamburger → X morph
   const topBar = mobileOpen
     ? "translate-y-[7px] rotate-45"
@@ -99,8 +116,9 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
-                  "relative text-sm font-medium transition-colors py-1",
+                  "relative text-sm font-medium transition-colors py-1 cursor-pointer",
                   activeSection === link.href.replace("#", "")
                     ? "text-sky-600"
                     : "text-gray-600 hover:text-gray-900"
@@ -187,7 +205,7 @@ export function Navbar() {
                       ? "text-sky-600"
                       : "text-gray-700 hover:text-sky-600"
                   )}
-                  onClick={closeMobile}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, link.href)}
                 >
                   {link.label}
                 </motion.a>
