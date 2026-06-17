@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Calculator", href: "#calculator" },
   { label: "Our Work", href: "#proof" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "Live Demo", href: "#demo" },
   { label: "Contact", href: "#contact" },
 ];
 
